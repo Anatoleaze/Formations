@@ -1,0 +1,311 @@
+Titre du cours : Docker pour les développeurs / développeuses
+
+Description : Docker est un outil standard pour les développeurs qui permet d'améliorer l'efficacité opérationnelle. Si vous êtes développeur et que vous souhaitez tirer parti de Docker, cette formation est pour vous. Manny Henri vous montre les avantages de cet outil, notamment l'optimisation du temps de codage. Ensemble, vous parcourrez les bases et quelques cas d'utilisation du logiciel pour le développement de projets front-end, back-end ou full-stack. Vous mettrez en œuvre une approche d'intégration continue à Docker et au développement. Puis vous verrez comment gérer plusieurs services avec Compose et comment profiter de Swarm ou Kubernetes.
+
+
+***********************************************
+Chapitre : 1. Mettre en place Docker
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Découvrir les concepts Docker
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:16            Container : Endroit où se situe l'application ou une ressource spécifique 
+
+0:01:40            Blueprint : Image d'un container, aide à la construction du container 
+
+0:01:44            Volume : Contient les données variables des containers 
+
+0:01:57            Networking: Élément qui permettent de communiquer entre les éléments 
+
+
+-----------------------------------------------
+Vidéo : Déployer sa première application
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:36            Il y a 2  Fichier Docker : Dockerfile / .dockerignore 
+
+0:02:04            dans .dockerignore : 
+  node_modules 
+  npm-debug.log 
+
+0:03:06            dans Dockerfile (lire et connaitre la configuration du serveur) : 
+  FROM node
+
+  WORKDIR /usr/src/app # Définie le work directory
+
+  COPY package.json ./ # Copie package.json à la source de notre dossier
+
+  RUN npm install # Installation des dépendances
+
+  COPY . . # Copie tout dans le dossier Docker
+
+  EXPOSE 4000 # Expose la valeur du port 4000
+
+  CMD ['npm', 'start'] # Execution de la commande 'npm start' # Executer le serveur 
+
+
+-----------------------------------------------
+Vidéo : Découvrir les commandes de base
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:00            1 ) Création d'une image : docker build -t user_name/app_name . 
+
+0:01:11            2 ) Lister les images : docker images 
+
+0:01:41            3 ) Supprimer une image : docker rmi image_id 
+
+0:02:15            docker run -p 4000:4000 -d user_name/image_name #execute du container sur le port 4000 
+
+0:02:28            verification du container activé : localhost:4000 
+
+0:02:56            Savoir les containers qui sont executés : docker ps 
+
+0:03:20            Arrêter un container : docker stop container_id 
+
+
+***********************************************
+Chapitre : 2. Développer avec Docker
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Mettre en pratique le back-end avec Compose
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:20            Compose : Gère plusieurs container et de définir l'ensemble du back-end avec un seul fichier 
+
+0:05:18            docker-compose.ymldans docker-compose.yml :
+
+# container qui est application principale
+app :
+  container_name : app
+  restart : always
+  build : .
+  ports : 
+    - "4000:4000"
+  links :
+    - mongo
+
+# container mongo
+mongo:
+  container_name : mongo
+  image : mongo
+  expose: #exposer le port
+    -"27017"
+  volumes:
+    - ./data:/data/db
+  ports:
+    - "27017:27017" 
+
+
+-----------------------------------------------
+Vidéo : Finaliser et tester la configuration du back-end
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:31            N'oubliez pas de partager les ressources, Docker > Resources > File Sharing ajouter le dossier /Volumes 
+
+0:01:38            N'oubliez pas de vous connecter à la bdd avec l'url sans localhost , par exemple pour mongo : mongodb://mongo:27017/database_name 
+
+0:02:07            Run composer (création des containers, images) : docker-compose build 
+
+0:02:26            Executer les containers (en même temps) :  docker-compose up 
+
+0:02:49            Executer un container : docker-compose up -d container_name 
+
+
+-----------------------------------------------
+Vidéo : Configurer le front-end
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:03:29            dans Dockerfile :
+FROM node
+
+WORKDIR /client
+
+COPY package*.json /client/
+
+RUN npm install 
+
+COPY . /client/
+
+EXPOSE 3000
+
+CMD [ 'npm', 'start'] 
+
+
+-----------------------------------------------
+Vidéo : Finaliser et tester la configuration du front-end
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:02:54            Création d'un container à partir d'une image : docker run -p 3000:3000 -d /user_name/image_name 
+
+
+-----------------------------------------------
+Vidéo : Réaliser une configuration complète du stack
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:04:04            Dans le docker-compose.yml qui est dans ./:
+
+versions: "3"
+services:
+    app:
+        container_name: app
+        restart: always
+        build: ./api
+        ports:
+            - "4000:4000"
+        depends_on:
+            - mongo
+    mongo:
+        container_name: mongo
+        image: mongo
+        restart: always
+        volumes: 
+            - ./data:/data/db
+        ports:
+            - "27017:27017" 
+
+
+-----------------------------------------------
+Vidéo : Finaliser la configuration du stack
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:02:08            Voir les containers arrêtés : docker ps -f "status=exited" 
+
+
+-----------------------------------------------
+Vidéo : Découvrir quelques conseils et astuces
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:47            connaitre le nom d'une image (mongo,MySQL, react, node...) = https://hub.docker.com/search?q=mysql 
+
+0:00:57            et dans Dockerfile : FROM mysql ou FROM davelabhub/spring 
+
+
+***********************************************
+Chapitre : 3. Assurer le déploiement et l'intégration continue avec Docker
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Comprendre le cas d'utilisation du CI
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:08            CI : intégration continue      
+
+0:00:35            Workflow= Développement -> Commit changements au repos -> Fournisseur CI , test le build (ex : Travis) -> Déploiement 
+
+0:01:01            On code une nouvelle fonctionnalité -> envoie sur github qui est connecté à Travis test le code automatiquement 
+
+
+-----------------------------------------------
+Vidéo : Créer le fichier Travis
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:02:09            Dans le Dockerfile qui est dans ./ :
+
+FROM node 
+
+RUN mdkir /usr/src/app
+
+WORKDIR /usr/src/app
+
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+
+COPY package*.json ./usr/src/app
+
+RUN npm install
+
+COPY . /usr/src/app
+
+EXPOSE 4000
+
+CMD ['npm', 'start'] 
+
+0:03:24            Dans le .travis.yml qui est dans ./ :
+
+sudo: required
+services: 
+    - docker
+
+script:
+    - docker build -t user_name_docker/node .
+    - docker images user_name_docker/node 
+
+
+-----------------------------------------------
+Vidéo : Configurer les éléments GitHub et Travis pour CI
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:37            1) Initialiser un dépôt git : git init 
+
+0:02:43            2 ) Faire le premier commit    
+
+0:02:53            3) Création d'un compte Travis sur : travis-ci.org ( connection avec github) 
+
+0:03:28            4) On fait un test sur le dashboard Travis 
+
+
+-----------------------------------------------
+Vidéo : Déployer des applications avec Docker
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:03:49            Mettre les identifiants et password dans les Setting du projet dans le dashboard de Travis 
+
+0:03:49            Si on le déploie sur Docker Hub, on modifie .travis.yml qui est dans ./ :
+
+sudo: required
+services: 
+    - docker
+
+script:
+    - docker build -t user_name_docker/node .
+    - docker images user_name_docker/node 
+
+before_deploy:
+    - docker login -u user_name -p user_password
+ 
+deploy:
+    provider:script
+    script: docker push user_name_docker/project_name
+    on :
+        branch: master 
+
+
+***********************************************
+Chapitre : 4. Aller plus loin dans les options
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Découvrir Swarm
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:37            Swarms : Outils de docker installé par défaut, regroupe, gère et planifie les cluster de container ( plusieurs projets qui contiennent plus containers chacun) 
+
+
+-----------------------------------------------
+Vidéo : Prendre en main Kubernetes
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:15            Kubernetes: Similaire à Swarms mais plus extensible 
+

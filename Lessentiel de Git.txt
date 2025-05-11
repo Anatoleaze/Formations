@@ -1,0 +1,319 @@
+Titre du cours : L'essentiel de Git
+
+Description : Git est l'un des systèmes de gestion de versions les plus utilisés au monde. Il vous permet de sauvegarder vos projets de développement, de structurer vos évolutions et de travailler en équipe. Si vous souhaitez utiliser Git et gagner en productivité, cette formation est pour vous. Julian Layen, développeur et formateur indépendant, vous explique comment installer Git, utiliser des branches, réaliser des commits, améliorer vos processus de collaboration et avoir un historique complet de tous vos projets.
+
+
+***********************************************
+Chapitre : 1. Découvrir la gestion de versions
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Comprendre la différence entre les notions de centralisé et de décentralisé
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:27            Logiciel de version décentralisé : Github 
+
+0:00:27            Logiciel de version centralisé : Subversion 
+
+0:00:51            La différence est que lorsque l'on est en décentralisé on a les informations sur le serveur et en local. Alors qu'en centralisé on dois être sur le serveur tout le temps (on ne possède pas de copie en local) 
+
+
+***********************************************
+Chapitre : 2. Mettre en place Git
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Configurer Git
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:17            Aide : git --help              
+
+0:00:25            Information sur une commande : git Macommande --help 
+
+
+***********************************************
+Chapitre : 3. Créer des dépôts
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Créer un nouveau dépôt
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:04:07            Créer un dépôt git : Bouton NEW sur le site web Github 
+
+
+-----------------------------------------------
+Vidéo : Installer un dépôt existant 
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:05            Créer un répertoire avec un répertoire existant en local : 
+
+0:00:06            git remote add origin git@github.com:Anatoleaze/NomDuRepertoire.git 
+
+0:00:07            git branch -M main             
+
+0:00:08            git push -u origin main        
+
+0:00:09            Créer un nouveau répertoire :  
+
+0:00:10            echo '# NomDuRepertoire' >> README.md 
+
+0:00:12            git init                       
+
+0:00:13            git add README.md              
+
+0:00:14            git commit -m "First commit"   
+
+0:03:14            git branch -M main             
+
+0:03:15            git remote add origin git@github.com:Anatoleaze/NomDuRepertoire.git 
+
+0:03:17            git push -u origin main        
+
+
+-----------------------------------------------
+Vidéo : Créer un fichier Readme
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:12            README.md :                    
+
+0:01:14            # Titre1                       
+
+0:01:15            ## Titre 2                     
+
+0:01:16            Liste ordonnée : 1. Un 2.Deux  
+
+0:01:16            Liste non ordonnée : +1 +2     
+
+0:01:37            Italique : *Truc*              
+
+0:01:37            Gras : **Truc**                
+
+0:01:45            Ligne horizontal : ---         
+
+0:02:17            Coloré un bloc de code : '''html <html></html>''' 
+
+0:02:34            Lien :  [Google] [https://google.fr] 
+
+
+***********************************************
+Chapitre : 4. Gérer ses dépôts
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Gérer ses commits
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:28            Voir la différence entre certain fichier : git diff NomduFichier.php 
+
+
+-----------------------------------------------
+Vidéo : Supprimer un fichier
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:17            Supprimer un fichier : git rm NomFichier.php 
+
+0:01:18            Annuler un suppression : git reset HEAD NomDuFichier.php 
+
+
+-----------------------------------------------
+Vidéo : Effectuer un premier commit
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:03:48            Faire un commit : git commit - m '.....' | git push 
+
+
+-----------------------------------------------
+Vidéo : Utiliser les logs
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:30            Voir le dernier log : git log -1 
+
+0:00:30            Voir les logs : git log        
+
+0:01:28            Afficher les logs en 1 ligne : git log --oneline 
+
+
+-----------------------------------------------
+Vidéo : Rechercher l'auteur
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:13            Chercher un commit par auteur : git log --author 'Anatole Aze' 
+
+0:00:52            Afficher les 3 derniers commits de Anatole après le  2 Avril   : git log -3 --author 'Anatole Aze' --before="2023-04-02" 
+
+0:01:02            Afficher les 3 derniers commits de Anatole avant le  2 Avril   : git log -3 --author 'Anatole Aze' --after="2023-04-02" 
+
+
+***********************************************
+Chapitre : 5. Gérer les branches
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Utiliser et manipuler les branches
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:55            branche Main => anciennement branche master 
+
+0:00:56            Lister les branches : git branch -v 
+
+0:01:09            Créer une branche : git branch MaNouvelleBranche 
+
+
+-----------------------------------------------
+Vidéo : Fusionner les branches à l'aide d'un merge
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:16            changer de branche : git checkout NomDeLaBranche 
+
+0:01:53            Push depuis une branche : git push -u origin NomDeLaBranche 
+
+0:03:29            Fusionner deux branches : git merge NomDeLaBranche 
+
+
+-----------------------------------------------
+Vidéo : Supprimer une branche
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:07            Récupérer les modifications d'une branche à une autre : git rebase NomDeLaBranche 
+
+0:00:39            Supprimer une branche : git branch -d NomDeLaBranche 
+
+0:00:54            On ne peut pas supprimer une branche, si on est dessus 
+
+
+-----------------------------------------------
+Vidéo : Créer une nouvelle branche
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:37            Créer et être sur la nouvelle branche : git checkout -b NomDeLaBranche 
+
+
+-----------------------------------------------
+Vidéo : Revenir à un état antérieur
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:18            On Obtient le numéro du commit avec git log => commit b8.... 
+
+0:01:18            Revenir à un état antérieur dans une branche : git checkout NumeroDuCommit 
+
+
+***********************************************
+Chapitre : 6. Découvrir quelques outils de Git
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Tirer parti du stash
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:38            Afficher les stash effectué : git stash list 
+
+0:01:38            Garder du code modifié qu'on ne souhaite pas push :  git stash 
+
+0:02:23            Supprimer tous les élèments en stash : git stash clear 
+
+
+-----------------------------------------------
+Vidéo : Utiliser les submodules
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:35            Submodules : dépôt à l'intérieur d'un dépôt (plusieurs librairie, dans le projet, et donc séparer les librairies du code) 
+
+0:01:38            Ajouter un submodule : git submodule add UrlDuDepot 
+
+
+-----------------------------------------------
+Vidéo : Mettre en place des alias
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:13            Alias : Raccourcie pour des commande GIT 
+
+0:00:30            Mettre dans le fichier : [alias] puis ur la ligne du dessous le raccourcie ( ex : st = status ) 
+
+0:00:30            Créer un alias : git config --global --edit 
+
+0:00:59            Quelques exemple : last = log -1 HEAD puis co = checkout puis di = diff puis cb = checkout -b 
+
+
+***********************************************
+Chapitre : 7. Travailler seul ou en équipe
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Initialiser un projet
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:15            1) Créer son projet ( composer ou autre ) 
+
+0:01:16            2 ) Créer le dépôt sur le site github 
+
+0:01:31            git init                       
+
+0:01:57            3) Créer le .gitignore         
+
+0:02:17            git add .                      
+
+0:02:25            git commit -a 'first commit'   
+
+0:02:30            git branch -M main             
+
+0:02:33            git push -u origin main        
+
+0:02:33            git remote add origin git@github.com:AnatoleAze/NomDuDepot.git 
+
+
+-----------------------------------------------
+Vidéo : Découvrir git-flow
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:39            Installer gitFlow sur Linux : sudo apt-get install git-flow 
+
+0:00:39            GitFlow = Permet de normé les Branches GIT = https://danielkummer.github.io/git-flow-cheatsheet/index.fr_FR.html   
+
+0:01:36            Commencer une feature : git flow feature start MyFeature 
+
+0:01:47            Récupérer une feature effectuer ailleurs ou par un autre utilisateur : git flow feature pull origin MYFEATURE 
+
+0:01:47            Publier une feature : git flow feature publish MYFEATURE 
+
+0:01:47            Terminer une feature : git flow feature finish MYFEATURE 
+
+0:01:49            Découpage du code par fonctionnalité (Features) à partir de la branch develop 
+
+0:01:50            Release = production           
+
+0:01:55            Créer une livraison : git flow release start RELEASE 
+
+0:01:57            FInir une production = git flow release finish RELEASE 
+
+0:02:00            Branche HotFix = Branche de Correctif Urgent 
+
+0:02:01            Commncer une Hotfixe = git flow hotfix start VERSION 
+

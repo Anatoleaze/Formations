@@ -1,0 +1,424 @@
+Titre du cours : Les fondements du text mining
+
+Description : Avez-vous déjà entendu parler du text mining ? Dans cette formation, vous commencerez par explorer les fondements du text mining. Pas à pas, vous apprendrez cette technique à travers des exemples opérationnels et courts que vous pourrez appliquer sur vos textes. Vous découvrirez également les librairies phares qui sont utilisées quotidiennement par les spécialistes de la donnée. Même si vous avez peu de notions en programmation, ce cours vous sera utile et vous guidera vers les bases fondamentales du text mining. Avec Franck Bardol, professeur associé en grande école d'ingénieurs, vous débuterez aisément avec cette méthode qui vous permettra d'extraire facilement des données et des informations dans les textes.
+
+
+***********************************************
+Chapitre : 1. Faire ses premiers pas avec le text mining
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Comprendre le text mining et le NLP
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:27            Text Mining : Analyse des textes 
+
+0:01:26            Objectif du Text Mining : Extraire des connaissances et des structures dans les documents 
+
+0:02:20            Extraire les connaissances cachées dans le texte (les patterns et schéma) 
+
+0:02:31            Voir les similarité dans un texte ou entre les textes 
+
+0:03:37            Catégoriser  des textes (sport, politique...) 
+
+
+-----------------------------------------------
+Vidéo : Découvrir le machine learning
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:26            Machine learning : façon révolutionnaire de programmer des ordinateurs ( la machine apprend) 
+
+0:02:30            On entraîne la machine sur des exemple, la machine règles ses paramètres,lorsque les exemple sont bon l'algorithme est performant et on lui donne plus de données 
+
+0:02:49            Text Mining  = Machine learning sur du texte 
+
+
+-----------------------------------------------
+Vidéo : Aborder des exemples appliqués
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:46            Classification de documents : Attribut une étiquette à chaque document , exemple mail spam et mail non spam 
+
+0:02:17            Clustering : faire des regroupement les plus intelligent possible, trouver des familles (calcule de similarité) 
+
+0:02:39            Information retrieval : trier les documents pour savoir les quels sont pertinents dans le bon ordre pour une requête 
+
+0:02:48            Information retrieval : trier les documents pour savoir les quels sont pertinents dans le bon ordre pour une requête 
+
+0:02:48            Information retrieval : trier les documents pour savoir les quels sont pertinents dans le bon ordre pour une requête 
+
+0:03:16            Autre exemple : Détection de la langue, génération de texte, robots journalisme, traduction automatique... 
+
+0:03:21            Autre exemple : Détection de la langue, génération de texte, robots journalisme, traduction automatique... 
+
+
+***********************************************
+Chapitre : 2. Gérer le text mining et le NLP à l'aide d'API
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Découvrir les API de NLP
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:02:47            API Text Mining Python : Nltk, Spacy,TextBlod, Pattern 
+
+
+-----------------------------------------------
+Vidéo : Installer NLTK
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:12            NLTK : Natural Langage Tool Kit 
+
+0:01:27            Intaller nltk pip : pip install nltk 
+
+0:01:28            installer nltk anaconda : conda install -c anaconda nltk 
+
+0:01:29            Installer un module complémentaire : 
+
+0:01:31            Lancer python en cmd : python  
+
+0:01:33            import nltk                    
+
+0:01:56            nltk.download('punkt')         
+
+
+-----------------------------------------------
+Vidéo : S'initier à NLTK
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:15            Token : mot élémentaire, isolé 
+
+0:00:47            from nltk import word_tokenize 
+
+0:01:05            word_tokenize(MonTexte)        
+
+0:02:03            identifier les lieux et les personne : 
+
+0:02:06            from nltk import word_tokenize,pos_tag, ne_chunk 
+
+0:02:36            mettre la phrase en token      
+
+0:02:53            print(ne_chunk(pos_tag(token))) 
+
+0:03:48            Lieux : GPE / GSP (Geo Political Entity) 
+
+
+-----------------------------------------------
+Vidéo : Aller plus loin avec NLTK
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:18            Lemmatisation : ramener tous les mots à leur forme neutre canonique (au masculin et à l'infinitif) 
+
+0:00:38            Racinisation : ne conserve que la racine des termes 
+
+0:01:43            Lemmatisation                  
+
+0:01:44            from nltk.stem.porter import PorterStemmer 
+
+0:01:54            ps = PorterStemmer()           
+
+0:02:29            ps.stem('échappée') => 'échappé' 
+
+0:03:11            racinisation                   
+
+0:03:18            racinisation                   
+
+0:03:19            from nltk.stem import SnowballStemmer 
+
+0:03:39            snow = SnowballStemmer('french') 
+
+0:03:41            snow = SnowballStemmer('french') 
+
+0:03:48            snow.stem('navigatrice') => navig 
+
+
+-----------------------------------------------
+Vidéo : S'initier à spaCy
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:20            Installer Spacy pip : pip install -U spacy 
+
+0:00:29            installer les modèles de langue :  python -m spacy download fr 
+
+
+-----------------------------------------------
+Vidéo : Prendre en main spaCy
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:12            charger le modèle : nlp=spacy.load('fr') 
+
+0:01:09            doc = nlp(MaPhrase)            
+
+0:01:30            Séparer les phrases : for sent in doc.sents: print(sent) 
+
+0:01:59            Reconnaissance des lieux et des personnes ( NER = Name Entity Recognition) 
+
+0:02:17            for ent in doc.ents: print(ent.label_,ent.text) 
+
+
+-----------------------------------------------
+Vidéo : Aller plus loin avec spaCy
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:17            for np in doc.noun_chunks: print(np) 
+
+0:00:17            Noun Chunk : éclater des phrases en morceaux cohérant 
+
+0:02:53            Lemmatisation                  
+
+0:03:32            for token in doc: print(token.text, token.lemma_) 
+
+0:04:26            Tagging (POS = Part Of Speech) 
+
+0:04:42            Taguer un mot selon sa classe grammaticale (nom, verbe...) 
+
+0:05:40            for token in doc: print(token.text, token.pos_) 
+
+
+***********************************************
+Chapitre : 3 . Préparer des textes
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Découvrir la librairie scikit-learn
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:19            scikit-learn = API généraliste ( prend un entrée des textes et des chiffres) 
+
+0:00:29            Scikit-learn = API  de machine learning 
+
+0:01:34            Méthode FIT = phase d'entraînement, l'API cherche les relation complexes qui résume les données d'entré 
+
+0:02:10            Méthode Transform = Phase de test ( reprend les réglages obtenus durant l'entraînement, pas de modification des réglages) 
+
+
+-----------------------------------------------
+Vidéo : Découvrir Bag of Words
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:27            Étape 1 : On prend tout les mots du texte 
+
+0:00:35            Étape 2 : On compte le nombre de fois ou le mot apparaît 
+
+0:00:45            Etape3 : On met les résultats dans un tableau = [ "de" : 8 , "la" : 10 ... ] 
+
+0:01:24            La version Binariser : idéal pour travailler sur un corpus, mettre un 1 si le mot apparaît dans le corpus, 0 sinon 
+
+0:02:24            Binariser : tient pour du document = [ "été" : [ doc_1 : 0, doc_2: 1], "hiver" : [doc_1:1, doc_2:0]] 
+
+
+-----------------------------------------------
+Vidéo : Créer un sac de mots
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:07            Bag of Words scikit-learn      
+
+0:00:10            Etape 2 : Extraire le texte / les textes 
+
+0:00:10            Etape 1 : créer un sac de mots vide : from sklearn.feature_extraction.text import CountVectorizer | vect = CountVectoriser() 
+
+0:00:12            Etape 3 : Effectuer les calcules : vect.fit(MonCorpus)  | bow = vectorizer.transform(MonCorpus) 
+
+
+-----------------------------------------------
+Vidéo : Afficher le résultat du calcul du Bag of Words
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:55            matrice 3 x 9 : 3 documents, 9 mots 
+
+0:01:01            Afficher tous les mots du sac : vect.get_feature_names() 
+
+0:01:05            Affichage Brut du dénombrement des mots : print(bow.toarray()) 
+
+0:01:08            Affichage dans un tableau : import pandas as pd | pd.DataFrame(bow.toarray(), columns = vectorizer.get_feature_names()) 
+
+
+-----------------------------------------------
+Vidéo : Comprendre la méthode TF-IDF
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:27            TF-IDF : Terme Frequency - Inverse Document Frequency 
+
+0:00:46            Pondération en tenant compte : 
+
+0:00:47            - de la fréquence du mot dans un document (TF) 
+
+0:00:51            - de la fréquence du mot dans tous les document (Document Frequency) 
+
+0:00:59            TF - IDF = TF x IDF            
+
+0:01:19            l'idée du TF-IDF : Donner un poids élevé aux mots apparaissent souvent dans un document ou dans un corpus ( rendant le score plus petit , proche de 1.0) exemple : "la" à un score de 1.000000123 
+
+0:01:39            Diminue le poids du mots, on inverse le sens => inverse de "inverse document frequency" 
+
+
+-----------------------------------------------
+Vidéo : Créer un TF-IDF
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:18            from sklearn.feature_extraction.text import CountVectorizer 
+
+0:00:20            from sklearn.feature_extraction.text import TfidfTransformer 
+
+0:00:22            import pandas as pd            
+
+0:00:24            vect=CountVectorizer()         
+
+0:00:25            counts  = vect.fit_transform(corpus) 
+
+0:00:26            # calcul TF-IDF : transf=TfidfTransfomer() 
+
+0:00:27            transf.fit_transform(counts)   
+
+
+-----------------------------------------------
+Vidéo : Calculer un TF-IDF
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:24            Affichage TF - IDF : dic=dict(zip(vect.get_feature_names(), transform.idf_)) 
+
+0:01:25            pd.DataFrame.from_dict(dic,orient='index') 
+
+
+-----------------------------------------------
+Vidéo : Découvrir le word embedding
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:20            Word Embedding  = Plongement de mots 
+
+0:00:27            Prise en compte du contexte contrairement au bag of words et au tf-idf 
+
+0:01:55            remplace chaque mot par une colonne de chiffre ( prise en compte des mots au alentours) 
+
+0:02:26            Contexte proche => Colonnes de chiffres qui se ressembleront 
+
+
+-----------------------------------------------
+Vidéo : Tirer parti de Gensim
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:30            Installer l'API Gensim : pip  install -U gensim 
+
+
+-----------------------------------------------
+Vidéo : Appliquer le word embedding
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:38            from gensim.models import Word2Vec 
+
+0:01:53            model= Word2Vec(MonCorpus,min_count=1) 
+
+0:02:17            Colonne pour un mot particulier : model['cat'] 
+
+0:03:18            chercher les mots similaires : model.most_similar("cat") 
+
+0:03:20            Les mots similaire à cat mais différent de dog :   model.most_similar(positive=['cat'],negative=['dog']) 
+
+0:05:13            Télécharger des calcules de wordEmbedding pour améliorer les résultats :  GloVe (globol vector de l'Université de stanford, Word2Vec (google, à partir de tous les articles de wikipedia) 
+
+
+***********************************************
+Chapitre : 4. Étudier les résultats obtenus par le text mining
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Définir la technique de classification
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:18            Résultat du text Mining : la classification (attribuer une étiquette, une classe , un label) 
+
+0:01:17            Munis d'une fonction d'erreur ( f ) qu'il devrait minimiser et d'une base d'apprentissage 
+
+0:02:19            On ne lui dit pas comment retrouver les bonnes réponses, aucune règles n'est fournie à l'algorithme 
+
+
+-----------------------------------------------
+Vidéo : Aborder un exemple de classification
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:36            Classification : Tweet Mining - Savoir si un tweet à un sentiment positif ou non 
+
+0:01:13            text_train =["don't feel good ptosis",....] # les tweets qui sont utilisé pour l'entrainement 
+
+0:01:45            # le sentiment à prédire : 0 -> négatif, 1 -> positif 
+
+0:01:55            outcom_train =[0,0,0,0,1,1,1,...] # les réponses que l'algorithme doit trouver en entraînement 
+
+0:03:01            # on charge dans le fichier Python les données de teste ( tweet de test, les réponses attendues) 
+
+0:03:49            from sklearn import metrics    
+
+0:03:49            from sklearn.naive_bayes import MultinominalNB 
+
+0:03:49            from sklearn.pipeline import Pipeline 
+
+0:03:49            from sklearn.feature_extraction.text import TfidfVectorizer 
+
+0:04:00            # Pipeline (tf-idf vectorizer -> classifier) : text_clf = Pipeline (['tfidf', TfidfVectorizer()),('clf',MultinomialNB())]) 
+
+0:04:02            Apprentissage (questions et réponses fournies) : text_clf.fit(text_train,outcome_train) 
+
+0:04:05            Test (nouvelles données): predicted = text_clf.predict(text_test) 
+
+0:04:07            Vérification des prédictions (calcul de la précision entre 0 et 1 , multiplier pas 100 pour pourcentage) : print(metrics.accuracy_score(outcome_test,predicted))  
+
+
+-----------------------------------------------
+Vidéo : Comprendre la technique de régression
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:05            Régression : calcul de tendances à partir de textes 
+
+0:00:29            Prévision de stock , prévision de température 
+
+0:00:32            Régression : Technique d'apprentissage supervisé dans laquelle un objectif et des exemple sont donnés à l'algorithme 
+
+0:01:30            Phase D'apprentissage : l’algorithme va balayer les exemples déjà évaluer  et réajuste ces réglages pour s'approcher du plus possible des réponses attendues 
+
+0:02:18            L’algorithme chemine jusqu'à la solution avec une méthode générale de résolution de problème 
+
+0:02:42            La méthode général de résolution des problèmes donne la clé pour bouger ses paramètres pour corriger les erreurs 
+
+0:03:29            Application dans la Santé pour étudier les promo sur les médicaments 
+
+
+-----------------------------------------------
+Vidéo : Découvrir le clustering
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:02            Clustering : Regroupement automatique de textes 
+
+0:00:43            Modèles de clustering apprennent sans supervision au préalable = on ne connaît pas la bonne réponse 
+
+0:01:24            Difficulté : regrouper les textes sans savoir si c'est les bons 
+
+0:02:15            l'algorithme regroupe le plus compact possible,au seins d'une même famille on regroupe les textes qui se ressembles et on éloigne le plus possibles les différentes familles 
+

@@ -1,0 +1,60 @@
+
+// Création d'une migration 
+php artisan make:migration create_product_table
+
+// Création du seeder Product ( fake product)
+php artisan make:seeder ProductSeeder
+
+// Ajoute le script app.js dans le fichier app.blade.php
+@vite([ 'resources/js/app.js'])
+
+// Lancer le serveur 
+php artisan serve
+
+// Nettoyer tout les caches 
+php artisan optimize:clear
+
+// Création d'une  table 
+// 1) création d'une entité
+php artisan make:migration create_promos_table
+// 2) Modifier la migration
+Schema::create('promos', function (Blueprint $table) {
+            $table->id();
+            $table->string('code')->unique();  // ✅ Code promo unique
+            $table->integer('remise');         // ✅ Remise en pourcentage (ex: 10%)
+            $table->integer('min_achat');      // ✅ Montant minimum d'achat requis
+            $table->date('started_at');        // ✅ Date de début de la promo
+            $table->date('expired_at');        // ✅ Date d'expiration de la promo
+            $table->timestamps();
+});
+// 3) Faire la migration
+php artisan migrate
+// 4) Création du modele
+php artisan make:model Promo
+// 5) Ajouter ça dans le modèle
+protected $fillable = [
+        'code',
+        'remise',
+        'min_achat',
+        'started_at',
+        'expired_at',
+    ];
+// 6) Insérer des fausses données
+php artisan make:seeder PromoSeeder
+
+// Puis dans le database/seeders/FraisLivraisonSeeder.php
+public function run() {
+        $frais = [
+            ['pays' => 'France', 'frais' => 5.99],
+            ['pays' => 'Belgique', 'frais' => 7.50],
+            ['pays' => 'Canada', 'frais' => 12.00],
+            ['pays' => 'États-Unis', 'frais' => 10.00],
+            ['pays' => 'Allemagne', 'frais' => 6.50]
+        ];
+
+        foreach ($frais as $item) {
+            FraisLivraison::create($item);
+        }
+    }
+// 7) Remplir la base de données
+php artisan db:seed --class=FraisLivraisonSeeder

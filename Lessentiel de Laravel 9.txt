@@ -1,0 +1,347 @@
+Titre du cours : L'essentiel de Laravel 9
+
+Description : Dans cette formation qui s'adresse aux développeurs ayant des notions PHP, vous découvrirez Laravel 9, la nouvelle version d'un framework de développement open source très utilisé de par le monde. Après vous avoir présenté le framework et ses composants, et procédé à l'installation et à la configuration des outils, Julian Layen vous plongera aussitôt dans la pratique, comme la mise en place du routing, la création de vues, l'utilisation de bases de données, l'authentification, la création d'API puis, avant de passer à un petit exercice, vous découvrirez d'autres composants.
+
+
+***********************************************
+Chapitre : 2. Connaître les concepts
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Gérer les dépendances avec Service Container
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:21            Service Container : outils qui permet de gérer les dépendances de classes et les injections de dépendances 
+
+
+-----------------------------------------------
+Vidéo : Assurer le démarrage des Service Providers
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:10            Service Providers : lieu central où on démarre tous les composants de l'application Laravel (fichier config/app.php) 
+
+
+***********************************************
+Chapitre : 2. Installer et configurer le framework
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Installer le framework
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:30            Créer projet Laravel : composer create-project laravel/laravel nom_Projet 
+
+
+-----------------------------------------------
+Vidéo : Configurer pour la production
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:50            Mettre en production :                                                                                                                                                                                                                                                           Fichier .env :  "APP_ENV= production" + changer APP_KEY 
+
+0:02:35            Mode maintenance : dans la cmd : php artisan down / php artisan up 
+
+
+***********************************************
+Chapitre : 4. Mettre en place le routing
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Passer des paramètres 
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:36            Route avec paramétre optionnel : Route::get('bonjour/{name?}', ... ); 
+
+0:01:36            Route paramètre : Route::get('/bonjour/{name}', ... ); 
+
+0:02:27            Définir un type de paramètre : Route ::get("user/profils/{name}", ...)->where('name','[A-Za-z]+'); 
+
+
+-----------------------------------------------
+Vidéo : Rediriger vers une autre route
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:08            Route::resource('/users',UserController::class) => définit toutes les routes précédentes ( lister les users, creer, supprimer, modifier les users) 
+
+0:03:07            - Route::get (Récupérer la ressource) , Route::post (Envoie de formulaire)  , Route:: put (Modification d'un seul élèment) , Route::patch (Modification de l'objet), Route:: delete (Supprime la ressource), Route::option (Récupérer des headers spécifiques => API) 
+
+
+-----------------------------------------------
+Vidéo : Réaliser un lien entre les routes et les actions
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:39            Lister les routes avec plus d'information : php artisan route:list -v 
+
+0:02:25            Liste toutes les routes :  php artisan route:list 
+
+
+***********************************************
+Chapitre : 5. Créer des vues avec Blade 
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Découvrir Blade
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:02:36            $data = User::orderBy('id','desc')->paginate(5); 
+
+
+-----------------------------------------------
+Vidéo : Comprendre la notion de directive
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:16            Condition :  @if (test1=== test2) Cool @else Bad @endif 
+
+0:00:40            Tant que c'est faux je boucle : @unless ( Auth::check()) Non connecté @endunless 
+
+0:00:56            savoir si un tableau est vide : @empty($toto) @endempty 
+
+0:00:56            savoir si une variable existe : @isset($toto) @endisset 
+
+0:01:02            savoir si je suis invité ou non : @guest  ... @endguest 
+
+0:01:02            savoir si on est authentifier : @auth ... @endauth 
+
+0:02:01            Boucle foreach : @foreach ( ['a','b','c'] as $tmp) <li> {{ tmp}} => {{ $loop->index }}</li> @endforeach 
+
+0:02:01            Boucle For : @for ($i=0; $i<10; $i++) ... @endfor 
+
+0:03:06            Inclure des templates : @include('default.error', ['errors' => ['invalide']  ]) 
+
+
+-----------------------------------------------
+Vidéo : Découvrir la logique de controller
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:02:40            faire une migration : php artisan migrate 
+
+
+-----------------------------------------------
+Vidéo : Utiliser les layouts et les sections
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:02:00            Layout : fichier qui référence la page HTML de base 
+
+
+-----------------------------------------------
+Vidéo : Créer des components
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:22            Créer un component : php artisan make:component MyComponent 
+
+0:01:42            Un component = 1 fichier PHP (app/View/Components/MyComponent.php) , 1 fichier blade (resources/views/components/MyComponent.blade.php) 
+
+0:02:21            Appeler le composent : <x-mycomponent/> 
+
+
+-----------------------------------------------
+Vidéo : Manipuler des formulaires
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:06:33            Retour avec un message : return redirect()->route('users.index')->with('success','L'utilisateur a été créer'); 
+
+
+***********************************************
+Chapitre : 6. Utiliser une base de données
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Créer des entités 
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:25            utiliser un Layout : @extends('layouts.app') 
+
+0:01:27            Créer un Model : php artisan make:model NomEntité 
+
+0:03:06            Définir les champs par défauts du modèle (dans le fichier Models/MyModel.php): protected $attrivutes = [  'nom' => 'toto', 'age'=>18]; 
+
+0:05:20            migrer sa base de données : php artisan migrate 
+
+
+-----------------------------------------------
+Vidéo : Découvrir le query builder
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:02:07            Récupérer toutes les lignes d'une table : DB::table("maTable")->get(); 
+
+0:02:21            Récupérer une entité avec des critères : DB::rtable("MaTable")->where('champs1','val1')->first(); 
+
+
+-----------------------------------------------
+Vidéo : Ajouter la pagination 
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:21            Dans la vue => {!! $myEntity->links() !!} 
+
+0:01:40            Dans le contrôleur, il faut faire une requête avec : ->paginate(nb d'entité par page) 
+
+0:01:55            Pagination Bootstrap : AppServiceProvider.php : use Illuminate\Pagination\Paginator; 
+
+0:02:03            Dans la fonction boot => Paginator::useBootstrap(); 
+
+
+-----------------------------------------------
+Vidéo : Utiliser les seeders pour le développement 
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:32            Créer une seed : php artisan make:seeder NomDeLaSeed 
+
+0:01:58            Executer les seeders : php artisan db:seed 
+
+
+***********************************************
+Chapitre : 7. Gérer l'authentification 
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Gérer la connexion
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:02:26            Authentification : composer require laravel/ui 
+
+
+***********************************************
+Chapitre : 8. Découvrir la console Artisan
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Lister les commandes utiles 
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:59            Lister TOUTES les commandes artian: php artisan list 
+
+0:02:53            Savoir comment la commande s'exucute : php artisan help CACHE:CLEAR 
+
+
+-----------------------------------------------
+Vidéo : Utiliser les commandes
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:57            Vider les caches : php artisan cache:clear 
+
+0:02:30            Créer, Modifier des objets (script php ) : php artisan tinker => $user=App\Models\User::create(['name'=>'toto','password'=>'truc' , ... ]); 
+
+
+-----------------------------------------------
+Vidéo : Créer une commande
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:31            Créer sa propre commande : php artisan make:command NomDeLaCommande 
+
+
+***********************************************
+Chapitre : 9. Aborder les autres composants du framework
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Envoyer des e-mails
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:19            Créer un Mail : php artisan make:mail MailExemple 
+
+0:02:11            Si il y a un paramètre, ajouter le paramètre dans le constructeur du fichier App/Mail/MonMail.php 
+
+0:03:21            Envoie mail dans le controller : use Illuminate\Support\Facades\Mail;  puis Mail::to($user->email()->send(new MyMail($user)); 
+
+
+-----------------------------------------------
+Vidéo : Utiliser le file storage
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:10            Dans App\Http\Controllers\HomeController.php => use Illuminate\Support\Facades\Storage; 
+
+0:02:13            Récupérer le chemin du fichier : Storage::disk('local')->path('exemple.txt'); 
+
+0:02:13            Récupérer un fichier : Storage::disk('local')->get('exemple.txt'); 
+
+0:02:13            Mettre un fichier sur le serveur : Storage::disk('local')->put('exemple.txt'); 
+
+0:02:19            Les fichier locaux sont dans storage/app/public 
+
+
+-----------------------------------------------
+Vidéo : Afficher des notifications
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:10            Affichier un message :  @if ($message == Session::get('success'))  {{message}} @endif 
+
+
+***********************************************
+Chapitre : 10. Créer une API avec Laravel
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Créer une API afin de lister les utilisateurs
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:26            Création d'api :  - créer dossier "Api" dans le dossier Controllers puis MyController.php 
+
+0:01:36            Le fichier MyController.php ressemble à un controleur classique avec une fonction index, show ... 
+
+0:02:30            Puis ajouter la route correspondante à l'api dans le fichier route/api.php => pour appeler il faut mettre /api devant le nom de la route donnée 
+
+
+***********************************************
+Chapitre : 11. Défi/solution
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Solution : Générer une entité et un formulaire
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:00:19            php artisan make:model Post    
+
+0:01:06            php artisan make:migration Post 
+
+0:01:33            php artisan migrate => execute la migration 
+
+
+***********************************************
+Chapitre : Conclusion
+***********************************************
+
+
+-----------------------------------------------
+Vidéo : Conclure sur le framework Laravel 9 
+-----------------------------------------------
+Heure de la note :    Texte de la note :             
+
+0:01:50            Authentification avec Facebook, Twitter, Google : Laravel Socialite  ( https://github.com/laravel/socialite ) 
+
+0:02:00            Laravel Ecommerce : Bagisto ( https://bagisto.com/en) 
+
